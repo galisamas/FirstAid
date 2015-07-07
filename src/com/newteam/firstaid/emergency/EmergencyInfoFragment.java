@@ -37,8 +37,8 @@ public class EmergencyInfoFragment extends Fragment {
         header = (TextView) v.findViewById(R.id.textView6);
         Bundle bundle = this.getArguments();
         int id = bundle.getInt("id", -1);
-        String[] buttonIds = getResources().getStringArray(R.array.buttons_emergency);
-        int buttonId = Integer.parseInt(buttonIds[id]);
+//        String[] buttonIds = getResources().getStringArray(R.array.buttons_emergency);
+//        int buttonId = Integer.parseInt(buttonIds[id]);
         header.setText(bundle.getString("header").toUpperCase());
 
         JSONRepository jsonRepository = new JSONRepository(getActivity());
@@ -53,7 +53,7 @@ public class EmergencyInfoFragment extends Fragment {
 //                list.add(new EmergencyInfoListItem(String.valueOf(i+1),titles[i]));
 //        }
 
-        listview.setAdapter(new EmergencyInfoListAdapter(getActivity(), list, buttonId));
+        listview.setAdapter(new EmergencyInfoListAdapter(getActivity(), list, 0));
         return v;
     }
 }

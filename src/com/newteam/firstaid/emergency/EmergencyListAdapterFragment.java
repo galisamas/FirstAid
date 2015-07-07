@@ -19,7 +19,6 @@ public class EmergencyListAdapterFragment extends Fragment {
 
     static FirstPageFragmentListener firstPageListener;
     private List<EmergencyListItem> mItems;
-    String[] titles;
     private ListView listview;
     private TextView header;
 
@@ -35,9 +34,10 @@ public class EmergencyListAdapterFragment extends Fragment {
         View v = inflater.inflate(R.layout.emergency_list_fragment, container, false);
         listview = (ListView) v.findViewById(R.id.steps_listView);
         header = (TextView) v.findViewById(R.id.textView6);
+        JSONRepository jsonRepository = new JSONRepository(getActivity());
         header.setText(getString(R.string.emergency_header));
         mItems = new ArrayList<>();
-        mItems.add(new EmergencyListItem( R.drawable.forward_arrow, "rodykle"));
+        mItems.add(new EmergencyListItem( R.drawable.forward_arrow, "rodykle")); // TODO reikia tikru duomenu
         listview.setAdapter(new EmergencyListAdapter(getActivity(), mItems));
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,24 +49,5 @@ public class EmergencyListAdapterFragment extends Fragment {
             }
         });
         return v;
-    }
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        JSONRepository jsonRepository = new JSONRepository(getActivity());
-
-//        mItems = jsonRepository.
-
-//        titles = getResources().getStringArray(R.array.name_emergency);
-//        TypedArray images = getResources().obtainTypedArray(R.array.icon_emergency);
-//
-//        for(int i=0; i<titles.length;i++)
-//            mItems.add(new EmergencyListItem(getResources().getDrawable(images.getResourceId(i, -1)),titles[i]));
-
-        // initialize and set the list adapter
-
     }
 }

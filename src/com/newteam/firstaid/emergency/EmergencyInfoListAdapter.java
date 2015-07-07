@@ -65,7 +65,7 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
         // update the item view
         EmergencyInfoListItem item = getItem(position);
         if (position != buttonId) {
-            viewHolder.tvNumber.setText(item.number);
+            viewHolder.tvNumber.setText(position);
             viewHolder.tvTitle.setText(item.title);
         } else {
             viewHolder.button = item.button;
