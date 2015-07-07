@@ -1,4 +1,4 @@
-package com.newteam.firstaid.emergencymenu;
+package com.newteam.firstaid.emergency;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.newteam.firstaid.R;
 import com.newteam.firstaid.controllers.TypefaceController;
+import com.newteam.firstaid.models.EmergencyListItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;

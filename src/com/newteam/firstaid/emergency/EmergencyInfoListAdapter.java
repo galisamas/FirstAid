@@ -1,4 +1,4 @@
-package com.newteam.firstaid.emergencyinfo;
+package com.newteam.firstaid.emergency;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.newteam.firstaid.R;
+import com.newteam.firstaid.models.EmergencyInfoListItem;
 
 import java.util.List;
 

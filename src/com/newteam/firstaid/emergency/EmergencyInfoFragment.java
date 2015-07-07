@@ -1,4 +1,4 @@
-package com.newteam.firstaid.emergencyinfo;
+package com.newteam.firstaid.emergency;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.newteam.firstaid.R;
+import com.newteam.firstaid.models.EmergencyInfoListItem;
 import com.newteam.firstaid.repositories.JSONRepository;
 
 import java.util.ArrayList;
@@ -16,6 +17,18 @@ public class EmergencyInfoFragment extends Fragment {
 
     ListView listview;
     private TextView header;
+    static FirstPageFragmentListener firstPageListener;
+
+    public EmergencyInfoFragment() {
+    }
+
+    public EmergencyInfoFragment(FirstPageFragmentListener listener) {
+        firstPageListener = listener;
+    }
+
+    public void backPressed() {
+        firstPageListener.onSwitchToNextFragment(null);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

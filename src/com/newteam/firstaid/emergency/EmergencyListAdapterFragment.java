@@ -1,9 +1,7 @@
-package com.newteam.firstaid.emergencymenu;
+package com.newteam.firstaid.emergency;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.newteam.firstaid.R;
-import com.newteam.firstaid.emergencyinfo.EmergencyInfoFragment;
+import com.newteam.firstaid.models.EmergencyListItem;
 import com.newteam.firstaid.repositories.JSONRepository;
 
 import java.util.ArrayList;
@@ -19,10 +17,18 @@ import java.util.List;
 
 public class EmergencyListAdapterFragment extends Fragment {
 
-    private List<EmergencyListItem> mItems;        // ListView items list
+    static FirstPageFragmentListener firstPageListener;
+    private List<EmergencyListItem> mItems;
     String[] titles;
     private ListView listview;
     private TextView header;
+
+    public EmergencyListAdapterFragment() {
+    }
+
+    public EmergencyListAdapterFragment(FirstPageFragmentListener listener) {
+        firstPageListener = listener;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,18 +42,10 @@ public class EmergencyListAdapterFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                if (fm.findFragmentById(android.R.id.content) == null) {
-                    EmergencyInfoFragment fragment = new EmergencyInfoFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("id", position);
-                    bundle.putString("header", mItems.get(position).title);
-                    fragment.setArguments(bundle);
-                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    fragmentTransaction.replace(android.R.id.content, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", position);
+                bundle.putString("header", mItems.get(position).title);
+                firstPageListener.onSwitchToNextFragment(bundle);
             }
         });
         return v;

@@ -2,7 +2,8 @@
 <resources>
     <string name="app_name">Pirmoji Pagalba</string>
     <string name="sos_number">111-222-333-444</string>
-    <string name="emergency_header">PIRMOS PAGALBOS GAIRĖS, ...</string>
-
+    <string name="emergency_header">PIRMOS PAGALBOS GAIRĖS, …</string>
+    <string name="hospital_header">RASK ARTIMIAUSIĄ LIGONINĘ</string>
+    <string name="heart_header">DIRBTINIS ŠIRDIES MASAŽAS (CPR)</string>
 
 </resources>
