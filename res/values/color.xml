@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="white" type="color">#FFFFFFFF</item>
+    <item name="black" type="color">#FF000000</item>
+
+    <item name="light_red" type="color">#FFE85A4D</item>
+    <item name="dark_red" type="color">#FFBC3B28</item>
+    <item name="blue" type="color">#FF103958</item>
+    <item name="header_background" type="color">#FFFDEEED</item>
+
+
+</resources>
