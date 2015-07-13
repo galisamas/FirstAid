@@ -1,24 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="60dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/item_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/list_item_marginTB"
+            android:layout_marginBottom="@dimen/list_item_marginTB"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/arrow"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/forward_arrow"
+            android:layout_alignParentRight="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Hospital type"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
+            android:text="Emergency type"
+            android:layout_toRightOf="@id/item_image"
+            android:layout_toLeftOf="@id/arrow"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="8dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:textColor="@color/blue"
             android:id="@+id/item_title"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearance"
-            android:layout_marginLeft="10dp"
-            android:text="0 km"
-            android:id="@+id/item_distance"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="address (distance)"
+            android:layout_below="@id/item_title"
+            android:layout_toRightOf="@id/item_image"
+            android:layout_toLeftOf="@id/arrow"
+            android:layout_marginLeft="8dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:textColor="@color/blue"
+            android:id="@+id/item_description"/>
 
-</LinearLayout>
+</RelativeLayout>

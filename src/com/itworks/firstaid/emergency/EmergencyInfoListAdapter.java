@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.itworks.firstaid.R;
@@ -41,7 +42,7 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
                 viewHolder.tvNumber = (TextView) convertView.findViewById(R.id.item_number);
                 viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.item_title);
             } else {
-                viewHolder.button = (Button) convertView.findViewById(R.id.image_button);
+                viewHolder.button = (ImageView) convertView.findViewById(R.id.image_button);
                 LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                 layoutParams.setMargins(30,2,30,2);
                 viewHolder.button.setLayoutParams(layoutParams);
@@ -63,7 +64,7 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
         }
 
         // update the item view
-        EmergencyInfoListItem item = getItem(position);
+        EmergencyInfoListItem item = getItem(position); //TODO
         if (position != buttonId) {
             viewHolder.tvNumber.setText(position);
             viewHolder.tvTitle.setText(item.title);
@@ -77,6 +78,6 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
     private static class ViewHolder {
         TextView tvNumber;
         TextView tvTitle;
-        Button button;
+        ImageView button;
     }
 }

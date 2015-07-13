@@ -2,5 +2,9 @@
 <resources>
     <dimen name="header_text_size">29dp</dimen>
     <dimen name="header_height">100dp</dimen>
+    <dimen name="hospital_icon_size">28dp</dimen>
+    <dimen name="hospital_icon_marginTB">8dp</dimen>
+    <dimen name="hospital_icon_marginLR">20dp</dimen>
+    <dimen name="list_item_marginTB">12dp</dimen>
 
 </resources>
