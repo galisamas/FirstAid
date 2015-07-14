@@ -6,10 +6,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textView6"
+            android:id="@+id/header"
             android:layout_alignParentTop="true"
             android:paddingLeft="8dp"
             android:background="@color/header_background"
+            android:textColor="@color/dark_red"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"/>
     <LinearLayout
@@ -92,8 +93,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Google Maps - GPS: 55,2221122 51,440000"
-                android:layout_toRightOf="@id/maps_image"
-                android:layout_toLeftOf="@id/maps_arrow"
+                android:layout_toRightOf="@+id/maps_image"
+                android:layout_toLeftOf="@+id/maps_arrow"
                 android:layout_centerVertical="true"
                 android:textColor="@color/blue"
                 android:singleLine="true"
@@ -137,8 +138,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="(85) 216 8877"
-            android:layout_toRightOf="@id/tel_image"
-            android:layout_toLeftOf="@id/tel_arrow"
+            android:layout_toRightOf="@+id/tel_image"
+            android:layout_toLeftOf="@+id/tel_arrow"
             android:layout_centerVertical="true"
             android:textColor="@color/blue"
             android:id="@+id/tel_title"/>
@@ -178,8 +179,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="www.pasikopusteliaudavome.com"
-                android:layout_toRightOf="@id/web_image"
-                android:layout_toLeftOf="@id/web_arrow"
+                android:layout_toRightOf="@+id/web_image"
+                android:layout_toLeftOf="@+id/web_arrow"
                 android:layout_centerVertical="true"
                 android:singleLine="true"
                 android:lines="1"
@@ -208,4 +209,11 @@
             android:layout_height="@dimen/hospital_icon_size">
     </LinearLayout>
 </LinearLayout>
+        <fragment android:id="@+id/map"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/header"
+                  android:layout_above="@+id/bottom"
+                  android:name="com.google.android.m4b.maps.MapFragment"/>
+
 </RelativeLayout>

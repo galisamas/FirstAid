@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.google.android.gms.maps.GoogleMap;
 import com.itworks.firstaid.R;
 import com.itworks.firstaid.models.EmergencyInfoListItem;
 import com.itworks.firstaid.repositories.JSONRepository;
@@ -47,6 +46,16 @@ public class EmergencyInfoFragment extends Fragment {
 //        String[] titles = jsonRepository.getEmergencyInfo
 
         ArrayList<EmergencyInfoListItem> list = new ArrayList<>();
+        list.add(new EmergencyInfoListItem(1,"pavadinimas","aprasymas"));
+        list.add(new EmergencyInfoListItem(2,R.drawable.hospital,"fotke","aprasymas2"));
+        list.add(new EmergencyInfoListItem(3,"pavadinimas","aprasyma3",R.drawable.hospital_cloud));
+        list.add(new EmergencyInfoListItem(4,"pavadinimas","aprasyma4"));
+        list.add(new EmergencyInfoListItem(5,"pavadinimas","aprasyma4"));
+        list.add(new EmergencyInfoListItem(6,"pavadinimas","aprasyma4"));
+        list.add(new EmergencyInfoListItem(7,"pavadinimas","aprasyma4"));
+        list.add(new EmergencyInfoListItem(8,"pavadinimas","aprasyma4"));
+        list.add(new EmergencyInfoListItem(10,"pavadinimas","aprasyma4hfghg hnhg hghnhhdfdas  f asdsadas das  dasdasd asd sad as dasd asd asd asd ssad sad asds a"));
+        list.add(new EmergencyInfoListItem(11,"pavadinimas","aprasyma4"));
 //        for(int i=0; i<titles.length;i++){
 //            if(buttonId == i)
 //                list.add(new EmergencyInfoListItem(new Button(this)));
@@ -54,7 +63,7 @@ public class EmergencyInfoFragment extends Fragment {
 //                list.add(new EmergencyInfoListItem(String.valueOf(i+1),titles[i]));
 //        }
 
-        listview.setAdapter(new EmergencyInfoListAdapter(getActivity(), list, 0));
+        listview.setAdapter(new EmergencyInfoListAdapter(getActivity(), list));
         return v;
     }
 }

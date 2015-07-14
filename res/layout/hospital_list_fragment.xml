@@ -11,8 +11,14 @@
             android:id="@+id/textView6"
             android:paddingLeft="8dp"
             android:background="@color/header_background"
+            android:textColor="@color/dark_red"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"/>
+
+    <fragment android:id="@+id/map"
+              android:layout_width="match_parent"
+              android:layout_height="320dp"
+              android:name="com.google.android.m4b.maps.MapFragment"/>
     <ListView
             android:id="@+id/steps_listView"
             android:layout_width="match_parent"

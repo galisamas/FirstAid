@@ -14,9 +14,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
-/**
- * Created by Naglis on 2015-02-22.
- */
 public class EmergencyListAdapter extends ArrayAdapter<EmergencyListItem> {
 
     private final Context context;
@@ -52,7 +49,7 @@ public class EmergencyListAdapter extends ArrayAdapter<EmergencyListItem> {
         imageLoader.displayImage("drawable://" + item.iconId, viewHolder.ivIcon);
         viewHolder.tvTitle.setText(item.title);
         TypefaceController typefaceController = new TypefaceController(context.getAssets());
-        typefaceController.setThin(viewHolder.tvTitle);
+        typefaceController.setRoman(viewHolder.tvTitle);
 
         return convertView;
     }

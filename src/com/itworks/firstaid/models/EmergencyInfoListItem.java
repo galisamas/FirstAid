@@ -1,23 +1,21 @@
 package com.itworks.firstaid.models;
 
-import android.widget.Button;
-
 public class EmergencyInfoListItem {
 
     public int id;
-    public int photoId;
+    public Integer photoId;
     public String title;
     public String subtitle;
-    public Button button;
+    public Integer button;
 
-    public EmergencyInfoListItem(int id, int photoId, String title, String subtitle) {
+    public EmergencyInfoListItem(int id, Integer photoId, String title, String subtitle) {
         this.id = id;
         this.photoId = photoId;
         this.title = title;
         this.subtitle = subtitle;
     }
 
-    public EmergencyInfoListItem(int id, int photoId, String title) {
+    public EmergencyInfoListItem(int id, Integer photoId, String title) {
         this.id = id;
         this.photoId = photoId;
         this.title = title;
@@ -34,14 +32,14 @@ public class EmergencyInfoListItem {
         this.subtitle = subtitle;
     }
 
-    public EmergencyInfoListItem(int id, Button button, String subtitle, String title) {
+    public EmergencyInfoListItem(int id, String title, String subtitle, Integer button) {
         this.id = id;
         this.button = button;
         this.subtitle = subtitle;
         this.title = title;
     }
 
-    public EmergencyInfoListItem(int id, Button button, String title) {
+    public EmergencyInfoListItem(int id, String title, Integer button) {
         this.id = id;
         this.button = button;
         this.title = title;

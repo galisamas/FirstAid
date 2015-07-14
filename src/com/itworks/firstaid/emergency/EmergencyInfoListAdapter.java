@@ -7,56 +7,74 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.itworks.firstaid.R;
+import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.models.EmergencyInfoListItem;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
+import java.util.TreeSet;
 
 public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem> {
 
+    private static final int TYPE_MAX_COUNT = 3;
+    private static final int TYPE_NONE = 0;
+    private static final int TYPE_PHOTO = 1;
+    private static final int TYPE_BUTTON = 2;
+    private TreeSet photosSet = new TreeSet();
+    private TreeSet buttonsSet = new TreeSet();
     private Context context;
-    private int buttonId;
-    public EmergencyInfoListAdapter(Context context, List<EmergencyInfoListItem> items, int buttonId) {
-        super(context, R.layout.emergency_info_list_item, items);
+
+    public EmergencyInfoListAdapter(Context context, List<EmergencyInfoListItem> items, TreeSet photosSet, TreeSet buttonsSet) {
+        super(context, 0, items);
         this.context = context;
-        this.buttonId = buttonId;
+        this.photosSet = photosSet;
+        this.buttonsSet = buttonsSet;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-
+        int type = getItemViewType(position);
         if(convertView == null) {
             // inflate the GridView item layout
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.emergency_info_list_item, parent, false);
-
-            // initialize the view holder
+            LayoutInflater inflater = LayoutInflater.from(context);
             viewHolder = new ViewHolder();
-
-            if (position != buttonId) {
-                viewHolder.tvNumber = (TextView) convertView.findViewById(R.id.item_number);
-                viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.item_title);
-            } else {
-                viewHolder.button = (ImageView) convertView.findViewById(R.id.image_button);
-                LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                layoutParams.setMargins(30,2,30,2);
-                viewHolder.button.setLayoutParams(layoutParams);
-                viewHolder.button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String posted_by = v.getContext().getResources().getString(R.string.sos_number);
-                        String uri = "tel:" + posted_by.trim();
-                        Intent intent = new Intent(Intent.ACTION_CALL);
-                        intent.setData(Uri.parse(uri));
-                        v.getContext().startActivity(intent);
-                    }
-                });
+            switch(type){
+                case TYPE_BUTTON:
+                    convertView = inflater.inflate(R.layout.emergency_info_list_button_item, parent, false);
+                    viewHolder.button = (ImageView) convertView.findViewById(R.id.item_button);
+                    viewHolder.button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String posted_by = v.getContext().getResources().getString(R.string.sos_number);
+                            String uri = "tel:" + posted_by.trim();
+                            Intent intent = new Intent(Intent.ACTION_CALL);
+                            intent.setData(Uri.parse(uri));
+                            v.getContext().startActivity(intent);
+                        }
+                    });
+                    break;
+                case TYPE_PHOTO:
+                    convertView = inflater.inflate(R.layout.emergency_info_list_image_item, parent, false);
+                    viewHolder.photo = (ImageView) convertView.findViewById(R.id.item_image);
+                    break;
+                case TYPE_NONE:
+                    convertView = inflater.inflate(R.layout.emergency_info_list_item, parent, false);
+                    break;
             }
+            // initialize the view holder
+
+            viewHolder.tvNumber = (TextView) convertView.findViewById(R.id.item_number);
+            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.item_title);
+            viewHolder.tvSubtitle = (TextView) convertView.findViewById(R.id.item_description);
             convertView.setTag(viewHolder);
         } else {
             // recycle the already inflated view
@@ -64,20 +82,38 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
         }
 
         // update the item view
-        EmergencyInfoListItem item = getItem(position); //TODO
-        if (position != buttonId) {
-            viewHolder.tvNumber.setText(position);
-            viewHolder.tvTitle.setText(item.title);
-        } else {
-            viewHolder.button = item.button;
-        }
+        EmergencyInfoListItem item = getItem(position);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        TypefaceController typefaceController = new TypefaceController(context.getAssets());
+        viewHolder.tvNumber.setText(String.valueOf(item.id));
+        viewHolder.tvTitle.setText(item.title);
+        viewHolder.tvSubtitle.setText(item.subtitle);
+        typefaceController.setRoman(viewHolder.tvNumber);
+        typefaceController.setRoman(viewHolder.tvTitle);
+        typefaceController.setRoman(viewHolder.tvSubtitle);
+        if(item.photoId != null)
+            imageLoader.displayImage("drawable://" + item.photoId, viewHolder.photo);
+        else if(item.button != null)
+            imageLoader.displayImage("drawable://" + item.button, viewHolder.button);
 
         return convertView;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return photosSet.contains(position) ? TYPE_PHOTO : (buttonsSet.contains(position) ? TYPE_BUTTON : TYPE_NONE);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return TYPE_MAX_COUNT;
     }
 
     private static class ViewHolder {
         TextView tvNumber;
         TextView tvTitle;
+        TextView tvSubtitle;
+        ImageView photo;
         ImageView button;
     }
 }

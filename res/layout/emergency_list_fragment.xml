@@ -9,6 +9,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textView6"
+            android:textColor="@color/dark_red"
             android:paddingLeft="8dp"
             android:background="@color/header_background"
             android:paddingBottom="5dp"
