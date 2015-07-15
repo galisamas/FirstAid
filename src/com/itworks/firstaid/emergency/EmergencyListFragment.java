@@ -15,17 +15,17 @@ import com.itworks.firstaid.repositories.JSONRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmergencyListAdapterFragment extends Fragment {
+public class EmergencyListFragment extends Fragment {
 
     static FirstPageFragmentListener firstPageListener;
     private List<EmergencyListItem> mItems;
     private ListView listview;
     private TextView header;
 
-    public EmergencyListAdapterFragment() {
+    public EmergencyListFragment() {
     }
 
-    public EmergencyListAdapterFragment(FirstPageFragmentListener listener) {
+    public EmergencyListFragment(FirstPageFragmentListener listener) {
         firstPageListener = listener;
     }
 

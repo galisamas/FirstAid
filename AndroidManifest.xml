@@ -36,5 +36,9 @@
         </activity>
         <activity android:name="com.itworks.firstaid.StartActivity"
                   android:screenOrientation="portrait"/>
+
+        <meta-data
+                android:name="com.google.android.maps.v2.API_KEY"
+                android:value="AIzaSyCwmE9tgrPA-VsemhZ4O6PRjnh-KTILQzA" />
     </application>
 </manifest> 

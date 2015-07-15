@@ -5,11 +5,12 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 import com.itworks.firstaid.R;
+import com.itworks.firstaid.models.HospitalListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HospitalListAdapterFragment extends ListFragment {
+public class HospitalListFragment extends ListFragment {
     private List<HospitalListItem> mItems;        // ListView items list
     String[] titles, distances;
 

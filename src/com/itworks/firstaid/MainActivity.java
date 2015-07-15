@@ -9,9 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.EmergencyInfoFragment;
-import com.itworks.firstaid.emergency.EmergencyListAdapterFragment;
+import com.itworks.firstaid.emergency.EmergencyListFragment;
 import com.itworks.firstaid.emergency.FirstPageFragmentListener;
-import com.itworks.firstaid.hospitalmenu.HospitalListAdapterFragment;
+import com.itworks.firstaid.hospitalmenu.HospitalListFragment;
 import com.itworks.firstaid.preparemenu.PrepareListAdapterFragment;
 
 public class MainActivity extends FragmentActivity {
@@ -19,7 +19,7 @@ public class MainActivity extends FragmentActivity {
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
     private String[] tabTitles;
-    public Fragment mFragmentAtPos0;
+    public Fragment mFragmentAtPos0, mFragmentAtPos1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,9 @@ public class MainActivity extends FragmentActivity {
         if(mFragmentAtPos0 != null && mFragmentAtPos0 instanceof EmergencyInfoFragment){
             ((EmergencyInfoFragment)mFragmentAtPos0).backPressed();
         }
-        else{
+        else if(mFragmentAtPos1 != null && mFragmentAtPos1 instanceof HospitalInfoFragment){
+            ((HospitalInfoFragment)mFragmentAtPos1).backPressed();
+        }else{
             super.onBackPressed();
         }
     }
@@ -54,18 +56,34 @@ public class MainActivity extends FragmentActivity {
             public void onSwitchToNextFragment(Bundle bundle) {
                 mFragmentManager.beginTransaction().remove(mFragmentAtPos0)
                         .commit();
-                if (mFragmentAtPos0 instanceof EmergencyListAdapterFragment){
-                    mFragmentAtPos0 = new EmergencyInfoFragment(listener);
+                if (mFragmentAtPos0 instanceof EmergencyListFragment){
+                    mFragmentAtPos0 = new EmergencyInfoFragment(firstPageListener);
                     mFragmentAtPos0.setArguments(bundle);
                 }else{ // Instance of NextFragment
-                    mFragmentAtPos0 = new EmergencyListAdapterFragment(listener);
+                    mFragmentAtPos0 = new EmergencyListFragment(firstPageListener);
+                }
+                notifyDataSetChanged();
+            }
+        }
+
+        private final class SecondPageListener implements
+                FirstPageFragmentListener {
+            public void onSwitchToNextFragment(Bundle bundle) {
+                mFragmentManager.beginTransaction().remove(mFragmentAtPos1)
+                        .commit();
+                if (mFragmentAtPos1 instanceof HospitalListFragment){
+                    mFragmentAtPos1 = new HospitalInfoFragment(secondPageListener);
+                    mFragmentAtPos1.setArguments(bundle);
+                }else{ // Instance of NextFragment
+                    mFragmentAtPos1 = new HospitalListFragment(secondPageListener);
                 }
                 notifyDataSetChanged();
             }
         }
 
         private final FragmentManager mFragmentManager;
-        FirstPageListener listener = new FirstPageListener();
+        FirstPageListener firstPageListener = new FirstPageListener();
+        SecondPageListener secondPageListener = new SecondPageListener();
 
         public CustomPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -79,11 +97,15 @@ public class MainActivity extends FragmentActivity {
                 case 0:
                     if (mFragmentAtPos0 == null)
                     {
-                        mFragmentAtPos0 = new EmergencyListAdapterFragment(listener);
+                        mFragmentAtPos0 = new EmergencyListFragment(firstPageListener);
                     }
                     return mFragmentAtPos0;
                 case 1:
-                    return new HospitalListAdapterFragment();
+                    if (mFragmentAtPos1 == null)
+                    {
+                        mFragmentAtPos1 = new HospitalListFragment(secondPageListener);
+                    }
+                    return mFragmentAtPos1;
                 case 2:
                     return new PrepareListAdapterFragment();
                 case 3:
@@ -106,12 +128,20 @@ public class MainActivity extends FragmentActivity {
         @Override
         public int getItemPosition(Object object)
         {
-            if (object instanceof EmergencyListAdapterFragment &&
+            if (object instanceof EmergencyListFragment &&
                     mFragmentAtPos0 instanceof EmergencyInfoFragment) {
                 return POSITION_NONE;
             }
             if (object instanceof EmergencyInfoFragment &&
-                    mFragmentAtPos0 instanceof EmergencyListAdapterFragment) {
+                    mFragmentAtPos0 instanceof EmergencyListFragment) {
+                return POSITION_NONE;
+            }
+            if (object instanceof HospitalListFragment &&
+                    mFragmentAtPos1 instanceof HospitalInfoFragment) {
+                return POSITION_NONE;
+            }
+            if (object instanceof HospitalInfoFragment &&
+                    mFragmentAtPos1 instanceof HospitalListFragment) {
                 return POSITION_NONE;
             }
             return POSITION_UNCHANGED;
