@@ -1,51 +1,58 @@
 package com.itworks.firstaid.hospitalmenu;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.itworks.firstaid.R;
+import com.itworks.firstaid.emergency.FirstPageFragmentListener;
 import com.itworks.firstaid.models.HospitalListItem;
+import com.itworks.firstaid.repositories.HospitalRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class HospitalListFragment extends ListFragment {
-    private List<HospitalListItem> mItems;        // ListView items list
-    String[] titles, distances;
+public class HospitalListFragment extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private FirstPageFragmentListener secondPageListener;
+    private List<HospitalListItem> mItems;
+    private ListView listview;
+    private TextView header;
+    private HospitalRepository hospitalRepository;
 
-        // initialize the items list
-        mItems = new ArrayList<HospitalListItem>();
+    public HospitalListFragment() {
+    }
 
-        //FIXME turi buti is kazkur nuskaitomos hospital ligonines ir juos atfiltruojamos pagal artuma iki vartotojo buvimo vietos
-
-//        for(int i=0; i<titles.length;i++)
-//            mItems.add(new HospitalListItem(titles[i], distances[i]));
-
-        // initialize and set the list adapter
-        setListAdapter(new HospitalListAdapter(getActivity(), mItems));
+    public HospitalListFragment(FirstPageFragmentListener listener) {
+        secondPageListener = listener;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        getListView().setDivider(getResources().getDrawable(R.color.light_red));
-        getListView().setDividerHeight(2);
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        // retrieve theListView item
-        HospitalListItem item = mItems.get(position);
-
-//        Intent intent = new Intent(getActivity(),HospitalActivity.class);
-//        intent.putExtra("id", position);
-//        getActivity().startActivity(intent);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.hospital_list_fragment, container, false);
+        listview = (ListView) v.findViewById(R.id.steps_listView);
+        header = (TextView) v.findViewById(R.id.textView6);
+        header.setText(getString(R.string.hospital_header));
+        hospitalRepository = new HospitalRepository();
+        mItems = hospitalRepository.getHospitalList();
+        listview.setAdapter(new HospitalListAdapter(getActivity(), mItems));
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", position); // TODO gal cai reiks visa info perduoti, nes jeigu is naujo pagal id ieskosiu listo elemento tai pvz jeigu zmogus vaziuos tai jis gali jau buti pasikeites
+                bundle.putString("distance", mItems.get(position).distance);
+                bundle.putString("header", mItems.get(position).title);
+                bundle.putString("web", mItems.get(position).web);
+                bundle.putString("phone", mItems.get(position).phone);
+                bundle.putDouble("lat", mItems.get(position).latitude);
+                bundle.putDouble("lng", mItems.get(position).longitude);
+                secondPageListener.onSwitchToNextFragment(bundle);
+            }
+        });
+        return v;
     }
 }

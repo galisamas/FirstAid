@@ -11,6 +11,7 @@ import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.EmergencyInfoFragment;
 import com.itworks.firstaid.emergency.EmergencyListFragment;
 import com.itworks.firstaid.emergency.FirstPageFragmentListener;
+import com.itworks.firstaid.hospitalmenu.HospitalInfoFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalListFragment;
 import com.itworks.firstaid.preparemenu.PrepareListAdapterFragment;
 
