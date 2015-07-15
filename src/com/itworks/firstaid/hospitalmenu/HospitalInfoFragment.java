@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.itworks.firstaid.R;
+import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.FirstPageFragmentListener;
 
-public class HospitalInfoFragment extends Fragment {
+public class HospitalInfoFragment extends Fragment{
 
     private TextView header, title, distance, phone, web, coordinates;
     static FirstPageFragmentListener secondPageListener;
@@ -40,8 +41,20 @@ public class HospitalInfoFragment extends Fragment {
         header.setText(headerText.toUpperCase());
         title.setText(headerText);
         distance.setText(bundle.getString("distance"));
-
-
+        coordinates.setText("Google Maps - GPS: " + bundle.getDouble("lat", 0.0) + ", " + bundle.getDouble("lng", 0.0));
+        phone.setText(bundle.getString("phone"));
+        web.setText(bundle.getString("web"));
+        setTypefaces();
         return v;
+    }
+
+    private void setTypefaces() {
+        TypefaceController typefaceController = new TypefaceController(getActivity().getAssets());
+        typefaceController.setRoman(header);
+        typefaceController.setRoman(title);
+        typefaceController.setRoman(distance);
+        typefaceController.setRoman(phone);
+        typefaceController.setRoman(web);
+        typefaceController.setRoman(coordinates);
     }
 }

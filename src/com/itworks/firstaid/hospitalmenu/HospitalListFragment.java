@@ -2,6 +2,7 @@ package com.itworks.firstaid.hospitalmenu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class HospitalListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("id", position); // TODO gal cai reiks visa info perduoti, nes jeigu is naujo pagal id ieskosiu listo elemento tai pvz jeigu zmogus vaziuos tai jis gali jau buti pasikeites
+                bundle.putInt("id", position);
                 bundle.putString("distance", mItems.get(position).distance);
                 bundle.putString("header", mItems.get(position).title);
                 bundle.putString("web", mItems.get(position).web);
@@ -55,4 +56,13 @@ public class HospitalListFragment extends Fragment {
         });
         return v;
     }
+
+//    @Override
+//    public void onDestroyView() {
+//       super.onDestroyView();
+//       Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));
+//       FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+//       ft.remove(fragment);
+//       ft.commit();
+//    }
 }
