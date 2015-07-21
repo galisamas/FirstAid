@@ -6,5 +6,8 @@
     <dimen name="hospital_icon_marginTB">8dp</dimen>
     <dimen name="hospital_icon_marginLR">20dp</dimen>
     <dimen name="list_item_marginTB">12dp</dimen>
+    <dimen name="heart_padding">16dp</dimen>
+    <dimen name="heart_text_size">20dp</dimen>
+
 
 </resources>

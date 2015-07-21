@@ -34,7 +34,7 @@ public class HospitalListAdapter extends ArrayAdapter<HospitalListItem> {
 
             // initialize the view holder
             viewHolder = new ViewHolder();
-            viewHolder.ivIcon = (ImageView) convertView.findViewById(R.id.item_image);
+            viewHolder.ivIcon = (ImageView) convertView.findViewById(R.id.item_image_hospital);
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.item_title);
             viewHolder.tvDistance = (TextView) convertView.findViewById(R.id.item_description);
 

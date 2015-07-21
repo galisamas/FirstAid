@@ -12,7 +12,7 @@ import com.itworks.firstaid.emergency.FirstPageFragmentListener;
 
 public class HospitalInfoFragment extends Fragment{
 
-    private TextView header, title, distance, phone, web, coordinates;
+    TextView header, title, distance, phone, web, coordinates;
     static FirstPageFragmentListener secondPageListener;
 
     public HospitalInfoFragment() {
@@ -28,7 +28,7 @@ public class HospitalInfoFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.hospital_list_fragment, container, false);
+        View v = inflater.inflate(R.layout.hospital_info_fragment, container, false);
         header = (TextView) v.findViewById(R.id.header);
         title = (TextView) v.findViewById(R.id.item_title);
         distance = (TextView) v.findViewById(R.id.item_description);

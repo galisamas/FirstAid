@@ -5,5 +5,13 @@
     <string name="emergency_header">PIRMOS PAGALBOS GAIRĖS, …</string>
     <string name="hospital_header">RASK ARTIMIAUSIĄ LIGONINĘ</string>
     <string name="heart_header">DIRBTINIS ŠIRDIES MASAŽAS (CPR)</string>
+    <string name="first_step_title">Iškvieskite greitąją pagalbą.</string>
+    <string name="first_step_subtitle">Jei esate ne vienas - paprašykite aplinkinių pagalbos!</string>
+    <string name="second_step">Atloškite galvą, praverkite kvėpavimo takus ir patikrinkite ar sužeistasis kvėpuoja.</string>
+    <string name="third_step">Atloškite galvą, užspauskite nosį ir įpūskite oro.</string>
+    <string name="fourth_step">Tvirtai dėkite rankas ties apatiniu krūtinkaulio trečdaliu ir pradėkite krūtinės paspaudimus. Krūtinę reikia spausti apie 120 kartų per minutę greičiu. Kas 30 paspaudimų 2 kartus įpūsti oro. Paspaudimų ir įpūtimų santykis 30:2. Krūtinę spausti 5-6 cm.</string>
+    <string name="fifth_step">Kad palaikytumėte reikiamą tempą - spauskite \"pradėti\" ir programėlė jums padės palaikyti tempą.</string>
+    <string name="push">Spausti</string>
+    <string name="blow">Pūsti</string>
 
 </resources>

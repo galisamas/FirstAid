@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView6"
+            android:paddingLeft="8dp"
+            android:background="@color/header_background"
+            android:textColor="@color/dark_red"
+            android:paddingBottom="5dp"
+            android:text="@string/heart_header"
+            android:paddingTop="5dp"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal"
+                          android:padding="@dimen/heart_padding"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="1"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/dark_red"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/heart_text_size"
+                            android:text="@string/first_step_title"
+                            android:textColor="@color/blue"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="26dp"
+                        android:src="@drawable/forward_arrow"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/item_button"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="@string/first_step_subtitle"
+                            android:textColor="@color/dark_red"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_red" />
+
+            <LinearLayout android:orientation="horizontal"
+                          android:padding="@dimen/heart_padding"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="2"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/dark_red"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/heart_text_size"
+                        android:text="@string/second_step"
+                        android:textColor="@color/blue"/>
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_red" />
+            <LinearLayout android:orientation="horizontal"
+                          android:padding="@dimen/heart_padding"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="3"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/dark_red"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/heart_text_size"
+                        android:text="@string/third_step"
+                        android:textColor="@color/blue"/>
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_red" />
+            <LinearLayout android:orientation="horizontal"
+                          android:padding="@dimen/heart_padding"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="4"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/dark_red"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/heart_text_size"
+                        android:text="@string/fourth_step"
+                        android:textColor="@color/blue"/>
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_red"/>
+
+            <LinearLayout android:orientation="horizontal"
+                          android:padding="@dimen/heart_padding"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="5"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/dark_red"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/heart_text_size"
+                        android:text="@string/fifth_step"
+                        android:textColor="@color/blue"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
