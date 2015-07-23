@@ -34,7 +34,7 @@
                         android:textSize="25dp"
                         android:text="1"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="17dp"
                         android:layout_alignParentLeft="true"
                         android:textColor="@color/dark_red"/>
                 <LinearLayout
@@ -42,6 +42,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
                     <TextView
+                            android:id="@+id/main1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/heart_text_size"
@@ -58,6 +59,7 @@
                         android:id="@+id/item_button"/>
 
                     <TextView
+                            android:id="@+id/sub1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -82,16 +84,20 @@
                         android:textSize="25dp"
                         android:text="2"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="17dp"
                         android:layout_alignParentLeft="true"
                         android:textColor="@color/dark_red"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/heart_text_size"
-                        android:text="@string/second_step"
-                        android:textColor="@color/blue"/>
+                <LinearLayout android:orientation="horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/main2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/heart_text_size"
+                            android:text="@string/second_step"
+                            android:textColor="@color/blue"/>
+                    </LinearLayout>
 
             </LinearLayout>
             <View
@@ -109,16 +115,21 @@
                         android:textSize="25dp"
                         android:text="3"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="17dp"
                         android:layout_alignParentLeft="true"
                         android:textColor="@color/dark_red"/>
+                <LinearLayout android:orientation="horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/heart_text_size"
-                        android:text="@string/third_step"
-                        android:textColor="@color/blue"/>
+                    <TextView
+                            android:id="@+id/main3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/heart_text_size"
+                            android:text="@string/third_step"
+                            android:textColor="@color/blue"/>
+                    </LinearLayout>
 
             </LinearLayout>
             <View
@@ -136,48 +147,103 @@
                         android:textSize="25dp"
                         android:text="4"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="17dp"
                         android:layout_alignParentLeft="true"
                         android:textColor="@color/dark_red"/>
+                <LinearLayout android:orientation="horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/heart_text_size"
-                        android:text="@string/fourth_step"
-                        android:textColor="@color/blue"/>
+                    <TextView
+                            android:id="@+id/main4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/heart_text_size"
+                            android:textColor="@color/blue"/>
+                    <!--android:text="@string/fourth_step"-->
+                </LinearLayout>
 
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/light_red"/>
+    </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_red"/>
 
-            <LinearLayout android:orientation="horizontal"
-                          android:padding="@dimen/heart_padding"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal"
+                  android:padding="@dimen/heart_padding"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="25dp"
-                        android:text="5"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_alignParentLeft="true"
-                        android:textColor="@color/dark_red"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="5"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="17dp"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/dark_red"/>
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/heart_text_size"
-                        android:text="@string/fifth_step"
-                        android:textColor="@color/blue"/>
-
-            </LinearLayout>
+            <TextView
+                    android:id="@+id/main5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/heart_text_size"
+                    android:text="@string/fifth_step"
+                    android:textColor="@color/blue"/>
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25dp"
+                            android:layout_centerVertical="true"
+                            android:text="@string/push"
+                            android:textColor="@color/blue"
+                            android:id="@+id/push"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textSize="90dp"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:id="@+id/sec"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="30dp"
+                            android:textSize="25dp"
+                            android:layout_centerVertical="true"
+                            android:text="@string/blow"
+                            android:textColor="@color/dark_red"
+                            android:id="@+id/blow"/>
+                </RelativeLayout>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/stop_button"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+</ScrollView>
 
 
 </LinearLayout>

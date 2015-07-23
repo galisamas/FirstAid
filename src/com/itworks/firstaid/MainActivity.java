@@ -11,6 +11,7 @@ import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.EmergencyInfoFragment;
 import com.itworks.firstaid.emergency.EmergencyListFragment;
 import com.itworks.firstaid.emergency.FirstPageFragmentListener;
+import com.itworks.firstaid.heart.HeartFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalInfoFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalListFragment;
 import com.itworks.firstaid.preparemenu.PrepareListAdapterFragment;
@@ -37,6 +38,30 @@ public class MainActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mCustomPagerAdapter);
         mViewPager.setCurrentItem(0);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int arg0) {
+                switch (arg0){
+                    case 1:
+                        if(mFragmentAtPos0 != null && mFragmentAtPos0 instanceof EmergencyInfoFragment){
+                            ((EmergencyInfoFragment)mFragmentAtPos0).backPressed();
+                        }
+                        break;
+                    case 0:
+                    case 2:
+                        if(mFragmentAtPos1 != null && mFragmentAtPos1 instanceof HospitalInfoFragment){
+                            ((HospitalInfoFragment)mFragmentAtPos1).backPressed();
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {}
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {}
+        });
     }
 
     @Override
@@ -61,7 +86,7 @@ public class MainActivity extends FragmentActivity {
                 if (mFragmentAtPos0 instanceof EmergencyListFragment){
                     mFragmentAtPos0 = new EmergencyInfoFragment(firstPageListener);
                     mFragmentAtPos0.setArguments(bundle);
-                }else{ // Instance of NextFragment
+                }else{
                     mFragmentAtPos0 = new EmergencyListFragment(firstPageListener);
                 }
                 notifyDataSetChanged();
@@ -76,7 +101,7 @@ public class MainActivity extends FragmentActivity {
                 if (mFragmentAtPos1 instanceof HospitalListFragment){
                     mFragmentAtPos1 = new HospitalInfoFragment(secondPageListener);
                     mFragmentAtPos1.setArguments(bundle);
-                }else{ // Instance of NextFragment
+                }else{
                     mFragmentAtPos1 = new HospitalListFragment(secondPageListener);
                 }
                 notifyDataSetChanged();
@@ -91,6 +116,7 @@ public class MainActivity extends FragmentActivity {
             super(fm);
             mFragmentManager = fm;
         }
+
         @Override
         public Fragment getItem(int position) {
 
@@ -111,7 +137,7 @@ public class MainActivity extends FragmentActivity {
                 case 2:
                     return new PrepareListAdapterFragment();
                 case 3:
-                    return new PrepareListAdapterFragment(); // todo sirdies masazas
+                    return new HeartFragment();
 //prideti jeigu atsiranda naujas tab
             }
             return null;
@@ -148,6 +174,5 @@ public class MainActivity extends FragmentActivity {
             }
             return POSITION_UNCHANGED;
         }
-
     }
 }
