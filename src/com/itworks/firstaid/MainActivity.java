@@ -21,12 +21,13 @@ public class MainActivity extends FragmentActivity {
     ViewPager mViewPager;
     private String[] tabTitles;
     public Fragment mFragmentAtPos0, mFragmentAtPos1;
+    public static FragmentManager fm;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        fm = getSupportFragmentManager();
         mCustomPagerAdapter = new CustomPagerAdapter(getSupportFragmentManager());
         TypefaceController typefaceController = new TypefaceController(getAssets());
         typefaceController.setThin((TextView) findViewById(R.id.title_text));
@@ -147,5 +148,6 @@ public class MainActivity extends FragmentActivity {
             }
             return POSITION_UNCHANGED;
         }
+
     }
 }
