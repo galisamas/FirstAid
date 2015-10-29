@@ -11,5 +11,6 @@ public class StartActivity extends FragmentActivity {
         Intent intent = new Intent(this, MainActivity.class);
         this.startActivity(intent);
         this.finish();
+        // TODO : cool intro  https://github.com/PaoloRotolo/AppIntro
     }
 }

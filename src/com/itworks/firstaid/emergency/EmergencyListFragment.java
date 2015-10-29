@@ -28,7 +28,10 @@ public class EmergencyListFragment extends Fragment {
     public EmergencyListFragment(FirstPageFragmentListener listener) {
         firstPageListener = listener;
     }
-
+// TODO : searchui https://github.com/felipecsl/QuickReturn
+    // https://android-arsenal.com/details/1/2552
+    // https://android-arsenal.com/details/1/2542
+    // https://android-arsenal.com/details/1/1723
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.emergency_list_fragment, container, false);

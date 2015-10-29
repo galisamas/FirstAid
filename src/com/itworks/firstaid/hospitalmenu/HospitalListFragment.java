@@ -45,7 +45,7 @@ public class HospitalListFragment extends Fragment implements android.location.L
     public HospitalListFragment(FirstPageFragmentListener listener) {
         secondPageListener = listener;
     }
-
+// TODO : reiktu padaryti focusa (kai paspaudzia ant map'o tai susitraukia listas, o kai paspaudzia ant listo, tai jis issitraukia i virsu ) https://github.com/umano/AndroidSlidingUpPanel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.hospital_list_fragment, container, false);

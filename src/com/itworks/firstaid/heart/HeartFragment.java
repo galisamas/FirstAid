@@ -115,6 +115,7 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
                     mp.release();
                 };
             });
+
             sec.setText("" + ++seconds);
             mHandler.postAtTime(this, SystemClock.uptimeMillis() + delayTime);
             if(seconds == 30 && pushIndex){
@@ -126,8 +127,6 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
                 delayTime = 1000;
                 pushIndex = !pushIndex;
             }
-
         }
     };
-
 }
