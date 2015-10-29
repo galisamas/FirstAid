@@ -14,10 +14,10 @@ import com.itworks.firstaid.emergency.FirstPageFragmentListener;
 import com.itworks.firstaid.heart.HeartFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalInfoFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalListFragment;
-import com.itworks.firstaid.preparemenu.PrepareListAdapterFragment;
 
 public class MainActivity extends FragmentActivity {
 
+    // TODO: isimti balta telefoniuka ir ideti per UIL
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
     private String[] tabTitles;
@@ -135,8 +135,8 @@ public class MainActivity extends FragmentActivity {
                     }
                     return mFragmentAtPos1;
                 case 2:
-                    return new PrepareListAdapterFragment();
-                case 3:
+//                    return new PrepareListAdapterFragment();
+//                case 3:
                     return new HeartFragment();
 //prideti jeigu atsiranda naujas tab
             }

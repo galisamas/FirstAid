@@ -48,15 +48,34 @@
                             android:textSize="@dimen/heart_text_size"
                             android:text="@string/first_step_title"
                             android:textColor="@color/blue"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginBottom="13dp"
-                        android:layout_marginRight="26dp"
-                        android:src="@drawable/forward_arrow"
-                        android:layout_gravity="center_horizontal"
-                        android:id="@+id/item_button"/>
+
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:id="@+id/item_button"
+                            android:background="@drawable/button112"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginBottom="13dp"
+                            android:layout_marginRight="26dp">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:id="@+id/buttonImage"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="4dp"
+                                android:layout_marginLeft="4dp"
+                                android:text="112"
+                                android:textColor="@color/blue"
+                                android:textSize="30sp"
+                                android:id="@+id/buttonText"/>
+                    </LinearLayout>
 
                     <TextView
                             android:id="@+id/sub1"
