@@ -1,6 +1,7 @@
 package com.itworks.firstaid.heart;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -85,21 +86,35 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
                 blow.setVisibility(View.VISIBLE);
                 sec.setText("0");
                 seconds = 0;
+                pushIndex = true;
             }
             buttonIndex = !buttonIndex;
         }
     }
     int delayTime = 1000;
+    private MediaPlayer player;
     private Handler mHandler = new Handler();
     private Runnable mUpdateTimeTask = new Runnable() {
         public void run() {
+            int soundValue;
             if (pushIndex) {
+                soundValue = R.raw.push_sound;
                 push.setVisibility(View.VISIBLE);
                 blow.setVisibility(View.GONE);
             } else {
+                soundValue = R.raw.blow_sound;
                 blow.setVisibility(View.VISIBLE);
                 push.setVisibility(View.GONE);
             }
+
+            player = MediaPlayer.create(HeartFragment.this.getActivity(), soundValue);
+            player.setVolume(100,100);
+            player.start();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+                };
+            });
             sec.setText("" + ++seconds);
             mHandler.postAtTime(this, SystemClock.uptimeMillis() + delayTime);
             if(seconds == 30 && pushIndex){
@@ -111,8 +126,8 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
                 delayTime = 1000;
                 pushIndex = !pushIndex;
             }
-        }
 
+        }
     };
 
 }
