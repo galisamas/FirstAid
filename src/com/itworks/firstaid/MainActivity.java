@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.itworks.firstaid.controllers.CallController;
 import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.EmergencyInfoFragment;
 import com.itworks.firstaid.emergency.EmergencyListFragment;
@@ -36,7 +37,9 @@ public class MainActivity extends FragmentActivity {
         typefaceController.setThin((TextView) findViewById(R.id.textView5));
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage("drawable://" + R.drawable.phone_white2, (ImageView) findViewById(R.id.whitePhoneImage));
-// TODO: dial to 112
+
+        CallController.dial(findViewById(R.id.call));
+
         tabTitles = getResources().getStringArray(R.array.tabs);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
