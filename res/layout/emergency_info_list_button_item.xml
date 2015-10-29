@@ -43,10 +43,26 @@
 
         </LinearLayout>
     </LinearLayout>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="13dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/item_button"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/item_button"
+        android:background="@drawable/button112"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp">
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/buttonImage"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="@string/numberName"
+                android:textColor="@color/blue"
+                android:textSize="25dp"
+                android:id="@+id/buttonText"/>
+    </LinearLayout>
 </LinearLayout>

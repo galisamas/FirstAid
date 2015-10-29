@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.emergency.EmergencyInfoFragment;
@@ -14,10 +15,10 @@ import com.itworks.firstaid.emergency.FirstPageFragmentListener;
 import com.itworks.firstaid.heart.HeartFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalInfoFragment;
 import com.itworks.firstaid.hospitalmenu.HospitalListFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MainActivity extends FragmentActivity {
 
-    // TODO: isimti balta telefoniuka ir ideti per UIL
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
     private String[] tabTitles;
@@ -33,6 +34,9 @@ public class MainActivity extends FragmentActivity {
         TypefaceController typefaceController = new TypefaceController(getAssets());
         typefaceController.setThin((TextView) findViewById(R.id.title_text));
         typefaceController.setThin((TextView) findViewById(R.id.textView5));
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage("drawable://" + R.drawable.phone_white2, (ImageView) findViewById(R.id.whitePhoneImage));
+// TODO: dial to 112
         tabTitles = getResources().getStringArray(R.array.tabs);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);

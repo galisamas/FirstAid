@@ -38,16 +38,16 @@ public class EmergencyInfoFragment extends Fragment {
         header.setText(bundle.getString("header").toUpperCase());
 
         EmergencyInfoListItemList list = new EmergencyInfoListItemList();
-        list.addElement(new EmergencyInfoListItem(1, "pavadinimas", "aprasymas"));
+        list.addElement(new EmergencyInfoListItem(1, "pavadinimas", "aprasymas", false));
         list.addPhotoElement(new EmergencyInfoListItem(2, R.drawable.hospital, "fotke", "aprasymas2"));
-        list.addButtonElement(new EmergencyInfoListItem(3, "pavadinimas", "aprasyma3", R.drawable.hospital_cloud));
-        list.addElement(new EmergencyInfoListItem(4, "pavadinimas", "aprasyma4"));
-        list.addElement(new EmergencyInfoListItem(5, "pavadinimas", "aprasyma4"));
-        list.addElement(new EmergencyInfoListItem(6, "pavadinimas", "aprasyma4"));
-        list.addElement(new EmergencyInfoListItem(7, "pavadinimas", "aprasyma4"));
-        list.addElement(new EmergencyInfoListItem(8, "pavadinimas", "aprasyma4"));
-        list.addElement(new EmergencyInfoListItem(10, "pavadinimas", "aprasyma4hfghg hnhg hghnhhdfdas  f asdsadas das  dasdasd asd sad as dasd asd asd asd ssad sad asds a"));
-        list.addElement(new EmergencyInfoListItem(11, "pavadinimas", "aprasyma4"));
+        list.addButtonElement(new EmergencyInfoListItem(3, "pavadinimas", "aprasyma3", true));
+        list.addElement(new EmergencyInfoListItem(4, "pavadinimas", "aprasyma4", false));
+        list.addElement(new EmergencyInfoListItem(5, "pavadinimas", "aprasyma4", false));
+        list.addElement(new EmergencyInfoListItem(6, "pavadinimas", "aprasyma4", false));
+        list.addElement(new EmergencyInfoListItem(7, "pavadinimas", "aprasyma4", false));
+        list.addElement(new EmergencyInfoListItem(8, "pavadinimas", "aprasyma4", false));
+        list.addElement(new EmergencyInfoListItem(10, "pavadinimas", "aprasyma4hfghg hnhg hghnhhdfdas  f asdsadas das  dasdasd asd sad as dasd asd asd asd ssad sad asds a", false));
+        list.addElement(new EmergencyInfoListItem(11, "pavadinimas", "aprasyma4", false));
 
 
         listview.setAdapter(new EmergencyInfoListAdapter(getActivity(), list.getList(),list.getPhotosSet(),list.getButtonsSet()));

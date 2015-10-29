@@ -13,5 +13,7 @@
     <string name="fifth_step">Kad palaikytumėte reikiamą tempą - spauskite \"pradėti\" ir programėlė jums padės palaikyti tempą.</string>
     <string name="push">SPAUSTI</string>
     <string name="blow">PŪSTI</string>
+    <string name="numberName">033</string>
+    <string name="stop_start_button_name">PRADĖTI</string>
 
 </resources>

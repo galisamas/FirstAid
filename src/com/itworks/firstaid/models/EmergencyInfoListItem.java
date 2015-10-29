@@ -1,5 +1,7 @@
 package com.itworks.firstaid.models;
 
+import com.itworks.firstaid.R;
+
 public class EmergencyInfoListItem {
 
     public int id;
@@ -21,27 +23,18 @@ public class EmergencyInfoListItem {
         this.title = title;
     }
 
-    public EmergencyInfoListItem(int id, String title) {
+    public EmergencyInfoListItem(int id, String title, String subtitle, Boolean button) {
         this.id = id;
-        this.title = title;
-    }
-
-    public EmergencyInfoListItem(int id, String title, String subtitle) {
-        this.id = id;
-        this.title = title;
-        this.subtitle = subtitle;
-    }
-
-    public EmergencyInfoListItem(int id, String title, String subtitle, Integer button) {
-        this.id = id;
-        this.button = button;
+        if(button)
+            this.button = R.drawable.phone_blue;
         this.subtitle = subtitle;
         this.title = title;
     }
 
-    public EmergencyInfoListItem(int id, String title, Integer button) {
+    public EmergencyInfoListItem(int id, String title, Boolean button) {
         this.id = id;
-        this.button = button;
+        if(button)
+            this.button = R.drawable.phone_blue;
         this.title = title;
     }
 }

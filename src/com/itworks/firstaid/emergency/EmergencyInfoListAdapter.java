@@ -1,15 +1,15 @@
 package com.itworks.firstaid.emergency;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.itworks.firstaid.R;
+import com.itworks.firstaid.controllers.CallController;
 import com.itworks.firstaid.controllers.TypefaceController;
 import com.itworks.firstaid.models.EmergencyInfoListItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,17 +50,9 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
             switch(type){
                 case TYPE_BUTTON:
                     convertView = inflater.inflate(R.layout.emergency_info_list_button_item, parent, false);
-                    viewHolder.button = (ImageView) convertView.findViewById(R.id.item_button);
-                    viewHolder.button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String posted_by = v.getContext().getResources().getString(R.string.sos_number);
-                            String uri = "tel:" + posted_by.trim();
-                            Intent intent = new Intent(Intent.ACTION_CALL);
-                            intent.setData(Uri.parse(uri));
-                            v.getContext().startActivity(intent);
-                        }
-                    });
+                    viewHolder.photo = (ImageView) convertView.findViewById(R.id.buttonImage);
+                    viewHolder.button = (LinearLayout) convertView.findViewById(R.id.item_button);
+                    CallController.dial(viewHolder.button);
                     break;
                 case TYPE_PHOTO:
                     convertView = inflater.inflate(R.layout.emergency_info_list_image_item, parent, false);
@@ -94,7 +86,7 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
         if(item.photoId != null)
             imageLoader.displayImage("drawable://" + item.photoId, viewHolder.photo);
         else if(item.button != null)
-            imageLoader.displayImage("drawable://" + item.button, viewHolder.button);
+            imageLoader.displayImage("drawable://" + item.button, viewHolder.photo);
 
         return convertView;
     }
@@ -114,6 +106,6 @@ public class EmergencyInfoListAdapter extends ArrayAdapter<EmergencyInfoListItem
         TextView tvTitle;
         TextView tvSubtitle;
         ImageView photo;
-        ImageView button;
+        LinearLayout button;
     }
 }
