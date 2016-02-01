@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.itworks.firstaid.R;
 import com.itworks.firstaid.models.EmergencyListItem;
 import com.itworks.firstaid.repositories.JSONRepository;
@@ -21,6 +19,7 @@ public class EmergencyListFragment extends Fragment {
     private List<EmergencyListItem> mItems;
     private ListView listview;
     private TextView header;
+    SearchView search;
 
     public EmergencyListFragment() {
     }
@@ -40,7 +39,7 @@ public class EmergencyListFragment extends Fragment {
         JSONRepository jsonRepository = new JSONRepository(getActivity());
         header.setText(getString(R.string.emergency_header));
         mItems = new ArrayList<>();
-        mItems.add(new EmergencyListItem( R.drawable.forward_arrow, "rodykle")); // TODO reikia tikru duomenu
+        mItems.add(new EmergencyListItem(R.drawable.forward_arrow, "rodykle")); // TODO reikia tikru duomenu
         listview.setAdapter(new EmergencyListAdapter(getActivity(), mItems));
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,6 +48,38 @@ public class EmergencyListFragment extends Fragment {
                 bundle.putInt("id", position);
                 bundle.putString("header", mItems.get(position).title);
                 firstPageListener.onSwitchToNextFragment(bundle);
+            }
+        });
+        search=(SearchView) v.findViewById(R.id.searchView);
+        search.setQueryHint(getResources().getString(R.string.search));
+
+        search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+            }
+        });
+
+        //*** setOnQueryTextListener ***
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO Auto-generated method stub
+
+                Toast.makeText(getActivity().getBaseContext(), query+ " submit",
+                        Toast.LENGTH_SHORT).show();
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO Auto-generated method stub
+
+                	Toast.makeText(getActivity().getBaseContext(), newText + " Change", Toast.LENGTH_SHORT).show();
+                return false;
             }
         });
         return v;

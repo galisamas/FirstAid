@@ -80,17 +80,22 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
                 mHandler.removeCallbacks(mUpdateTimeTask);
                 mHandler.postDelayed(mUpdateTimeTask, 2000);
             } else {
-                buttonStopText.setText(R.string.start_button_name);
-                mHandler.removeCallbacks(mUpdateTimeTask);
-                push.setVisibility(View.VISIBLE);
-                blow.setVisibility(View.VISIBLE);
-                sec.setText("0");
-                seconds = 0;
-                pushIndex = true;
+                cancelCPR();
             }
             buttonIndex = !buttonIndex;
         }
     }
+
+    private void cancelCPR() {
+        buttonStopText.setText(R.string.start_button_name);
+        mHandler.removeCallbacks(mUpdateTimeTask);
+        push.setVisibility(View.VISIBLE);
+        blow.setVisibility(View.VISIBLE);
+        sec.setText("0");
+        seconds = 0;
+        pushIndex = true;
+    }
+
     int delayTime = 1000;
     private MediaPlayer player;
     private Handler mHandler = new Handler();
@@ -129,4 +134,15 @@ public class HeartFragment extends Fragment implements View.OnClickListener {
             }
         }
     };
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        cancelCPR();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        cancelCPR(); //TODO: kai nuskrolinu per viena i sona tai nesustoja CPR
+    }
 }
